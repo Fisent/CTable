@@ -37,6 +37,13 @@ public:
     CTable* clone();//DONE
     bool assign(CTable &table);
 
+    //operators overloading:
+    void operator=(CTable* right);
+    inline CTable operator+(const CTable* rigth);
+    CTable operator-(CTable* rigth);
+    CTable operator*(CTable* rigth);
+
+
 
 private:
     int length;

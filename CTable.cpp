@@ -125,3 +125,21 @@ bool CTable::assign(CTable &table)
     }
     return true;
 }
+
+void CTable::operator=(CTable* right)
+{
+    this->assign(*right);
+}
+
+inline CTable CTable::operator+(const CTable *rigth)
+{
+    CTable* newTable = new CTable(*this);
+    int newSize = this->getLength() + rigth->getLength();
+    newTable->changeSize(newSize);
+    int j = 0;
+    for(int i = this->getLength(); i<newSize; i++)
+    {
+        newTable->write(i, rigth->tab[j]);
+    }
+    return *newTable;
+}

@@ -211,7 +211,16 @@ void console()
 
 int main(int argc, char** argv)
 {
-    console();
+    //console();
 
+    CTable* c1 = new CTable();
+    CTable* c2 = new CTable();
+    c2->write(0,99);
+    c1->write(0,976);
+    cout << "c1: " << c1->toString() << endl;
+    cout << "c2" << c2->toString() << endl;
+    CTable* c3 = new CTable();
+    c3 = c1 + c2;
+    cout << "c3: " << c3->toString() << endl;
     return 0;
 }
