@@ -38,10 +38,10 @@ public:
     bool assign(CTable &table);
 
     //operators overloading:
-    void operator=(CTable* right);
-    inline CTable operator+(const CTable* rigth);
-    CTable operator-(CTable* rigth);
-    CTable operator*(CTable* rigth);
+    void operator=(CTable& right);
+    CTable* operator+(CTable& rigth);
+    CTable* operator-(CTable& rigth);
+    CTable* operator*(CTable& rigth);
 
 
 

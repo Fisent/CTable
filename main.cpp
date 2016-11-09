@@ -35,6 +35,9 @@ const string WRITE = "write";
 const string CLONE = "clone";
 const string NOTHING = "nothing";
 const string HELP = "help";
+const string PLUS = "+";
+const string MINUS = "-";
+const string STAR = "*";
 
 int inputInt()
 {
@@ -200,9 +203,105 @@ void console()
             }
 
         }
+        if(command == PLUS)
+        {
+            cout << "wpisz indeks tablicy w ktorej zostanie zapisany wynik: ";
+            int index = inputInt();
+            if(index < 0 || index >= tables.size())
+            {
+                cout << "zly indeks" << endl;
+            }
+            else
+            {
+                cout << "wpisz indeks pierwszej tablicy: ";
+                int index1 = inputInt();
+                if(index < 0 || index >= tables.size())
+                {
+                    cout << "zly indeks" << endl;
+                }
+                else
+                {
+                    cout << "wpisz indeks drugiej tablicy: ";
+                    int index2 = inputInt();
+                    if(index < 0 || index >= tables.size())
+                    {
+                        cout << "zly indeks" << endl;
+                    }
+                    else
+                    {
+                        tables.at(index) = *tables.at(index1) + *tables.at(index2);
+                    }
+                }
+            }
+
+        }
+        if(command == STAR)
+        {
+            cout << "wpisz indeks tablicy w ktorej zostanie zapisany wynik: ";
+            int index = inputInt();
+            if(index < 0 || index >= tables.size())
+            {
+                cout << "zly indeks" << endl;
+            }
+            else
+            {
+                cout << "wpisz indeks pierwszej tablicy: ";
+                int index1 = inputInt();
+                if(index < 0 || index >= tables.size())
+                {
+                    cout << "zly indeks" << endl;
+                }
+                else
+                {
+                    cout << "wpisz indeks drugiej tablicy: ";
+                    int index2 = inputInt();
+                    if(index < 0 || index >= tables.size())
+                    {
+                        cout << "zly indeks" << endl;
+                    }
+                    else
+                    {
+                        tables.at(index) = *tables.at(index1) * *tables.at(index2);
+                    }
+                }
+            }
+
+        }
+        if(command == MINUS)
+        {
+            cout << "wpisz indeks tablicy w ktorej zostanie zapisany wynik: ";
+            int index = inputInt();
+            if(index < 0 || index >= tables.size())
+            {
+                cout << "zly indeks" << endl;
+            }
+            else
+            {
+                cout << "wpisz indeks pierwszej tablicy: ";
+                int index1 = inputInt();
+                if(index < 0 || index >= tables.size())
+                {
+                    cout << "zly indeks" << endl;
+                }
+                else
+                {
+                    cout << "wpisz indeks drugiej tablicy: ";
+                    int index2 = inputInt();
+                    if(index < 0 || index >= tables.size())
+                    {
+                        cout << "zly indeks" << endl;
+                    }
+                    else
+                    {
+                        tables.at(index) = *tables.at(index1) - *tables.at(index2);
+                    }
+                }
+            }
+
+        }
         if(command == HELP)
         {
-            cout << "quit \nnew \nprint \nprintall \nsize \ndelete \nclear \nchangename \nchangesize \nwrite \nclone \nnothing\n";
+        cout << "quit \nnew \nprint \nprintall \nsize \ndelete \nclear \nchangename \nchangesize \nwrite \nclone \nnothing\n";
         }
         cin.clear();
 
@@ -211,16 +310,20 @@ void console()
 
 int main(int argc, char** argv)
 {
-    //console();
+    console();
 
     CTable* c1 = new CTable();
     CTable* c2 = new CTable();
     c2->write(0,99);
     c1->write(0,976);
+    c1->write(3, 99);
     cout << "c1: " << c1->toString() << endl;
     cout << "c2" << c2->toString() << endl;
     CTable* c3 = new CTable();
-    c3 = c1 + c2;
+    c3 = (*c1) - (*c2);
     cout << "c3: " << c3->toString() << endl;
+    cout << "operator -" << endl;
     return 0;
 }
+
+

@@ -126,20 +126,51 @@ bool CTable::assign(CTable &table)
     return true;
 }
 
-void CTable::operator=(CTable* right)
+void CTable::operator=(CTable& right)
 {
-    this->assign(*right);
+    this->assign(right);
 }
 
-inline CTable CTable::operator+(const CTable *rigth)
+CTable* CTable::operator+(CTable& rigth)
 {
     CTable* newTable = new CTable(*this);
-    int newSize = this->getLength() + rigth->getLength();
+    int newSize = this->getLength() + rigth.getLength();
     newTable->changeSize(newSize);
     int j = 0;
     for(int i = this->getLength(); i<newSize; i++)
     {
-        newTable->write(i, rigth->tab[j]);
+        newTable->write(i, rigth.tab[j]);
+        j++;
     }
-    return *newTable;
+    return newTable;
+}
+
+CTable* CTable::operator-(CTable& right)
+{
+    CTable* newTable = new CTable(*this);
+    for(int i = 0; i<this->getLength(); i++)
+    {
+        for(int j = 0; j< right.getLength(); j++)
+        {
+            if(newTable->tab[i] == right.tab[j])
+            {
+                newTable->write(i, 0);
+            }
+        }
+    }
+
+    return newTable;
+}
+
+CTable *CTable::operator*(CTable &rigth)
+{
+    CTable* newTable = new CTable(*this);
+    for(int i = 0; i< this->getLength(); i++)
+    {
+        for(int j = 0; j<rigth.getLength(); j++)
+        {
+
+        }
+    }
+    return newTable;
 }
