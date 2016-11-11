@@ -164,13 +164,22 @@ CTable* CTable::operator-(CTable& right)
 
 CTable *CTable::operator*(CTable &rigth)
 {
-    CTable* newTable = new CTable(*this);
-    for(int i = 0; i< this->getLength(); i++)
+    CTable* newTable = new CTable();
+    newTable->changeSize(this->getLength());
+    int countIndex = 0;
+    for(int i = 0; i<this->getLength(); i++)
     {
+        bool added = false;
         for(int j = 0; j<rigth.getLength(); j++)
         {
-
+            if(this->tab[i] == rigth.tab[j] && !added)
+            {
+                added = true;
+                newTable->write(countIndex, this->tab[i]);
+                countIndex++;
+            }
         }
     }
+    newTable->changeSize(countIndex);
     return newTable;
 }

@@ -314,8 +314,8 @@ int main(int argc, char** argv)
 
     CTable* c1 = new CTable();
     CTable* c2 = new CTable();
-    c2->write(0,99);
-    c1->write(0,976);
+    c2->write(0, 99);
+    c1->write(0, 976);
     c1->write(3, 99);
     cout << "c1: " << c1->toString() << endl;
     cout << "c2" << c2->toString() << endl;
