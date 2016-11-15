@@ -129,6 +129,7 @@ bool CTable::assign(CTable &table)
 void CTable::operator=(CTable& right)
 {
     this->assign(right);
+    delete right;
 }
 
 CTable* CTable::operator+(CTable& rigth)
@@ -142,6 +143,7 @@ CTable* CTable::operator+(CTable& rigth)
         newTable->write(i, rigth.tab[j]);
         j++;
     }
+    delete right;
     return newTable;
 }
 
@@ -158,7 +160,7 @@ CTable* CTable::operator-(CTable& right)
             }
         }
     }
-
+    delete right;
     return newTable;
 }
 
@@ -181,5 +183,6 @@ CTable *CTable::operator*(CTable &rigth)
         }
     }
     newTable->changeSize(countIndex);
+    delete right;
     return newTable;
 }

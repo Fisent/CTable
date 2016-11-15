@@ -199,6 +199,7 @@ void console()
             }
             else
             {
+
                 nothing(*tables.at(index));
             }
 
@@ -229,6 +230,7 @@ void console()
                     }
                     else
                     {
+                        delete tables.at(index);
                         tables.at(index) = *tables.at(index1) + *tables.at(index2);
                     }
                 }
@@ -261,6 +263,7 @@ void console()
                     }
                     else
                     {
+                        delete tables.at(index);
                         tables.at(index) = *tables.at(index1) * *tables.at(index2);
                     }
                 }
@@ -293,6 +296,7 @@ void console()
                     }
                     else
                     {
+                        delete tables.at(index);
                         tables.at(index) = *tables.at(index1) - *tables.at(index2);
                     }
                 }
